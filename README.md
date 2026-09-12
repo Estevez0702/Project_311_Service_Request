@@ -1,6 +1,6 @@
 # Project_311_Service_Request
 
-1. Caso de Negocio
+# 1. Caso de Negocio
 
 Descripción del problema: Imagina una ciudad enorme como Nueva York, donde la gente reporta de todo todos los días: un bache en la calle, ruido excesivo, problemas con el agua o basura acumulada. El problema es que esta información entra como una avalancha desordenada, lo que hace que los departamentos de la ciudad colapsen tratando de clasificar, priorizar y asignar recursos para resolver las quejas a tiempo. Básicamente, se enfrentan a un volumen gigantesco de datos que no están aprovechando bien, lo que genera demoras en el servicio y ciudadanos molestos.
 
