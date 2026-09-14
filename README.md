@@ -39,7 +39,7 @@ presentada.
 Modelado: Descripción de los modelos que ayudan a sacar
 provecho de los datos
 
-6. ## APP o Visualización
+## 6. APP o Visualización
 
 **Dashboard PowerBI**
 
