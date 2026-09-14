@@ -20,3 +20,8 @@
 
 **Explicación Técnica:** Básicamente, el flujo funciona así: primero recolectamos los datos de los reportes del "NYC Service Request" a través de un canal o tubería que los lleva hacia nuestro almacenamiento principal (como un gran lago de datos en la nube, donde cabe de todo sin importar su formato). Una vez ahí, usamos herramientas de procesamiento potente (pensemos en motores de Big Data) que se encargan de limpiar la información, organizarla y cruzarla. Finalmente, esos datos ya procesados y limpios se conectan a un tablero visual (como Power BI) que los gerentes de la ciudad pueden mirar fácilmente para ver gráficos, tendencias y mapas de calor, entendiendo qué pasa en las calles en tiempo real sin tener que ver ni una sola línea de código.
 
+# PIPELINE - Ingesta de Datos
+
+**Databricks**
+
+<img width="950" height="406" alt="image" src="https://github.com/user-attachments/assets/b2806630-6585-40ac-8b7f-aacbac21acd2" />
