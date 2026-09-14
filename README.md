@@ -75,12 +75,16 @@ ingesta de datos
 <img width="950" height="406" alt="image" src="https://github.com/user-attachments/assets/b2806630-6585-40ac-8b7f-aacbac21acd2" />
 
 ## 5. Modelos
-<img width="839" height="437" alt="image" src="https://github.com/user-attachments/assets/589ac507-7885-4011-8d99-5ea152541897" />
+<img width="836" height="428" alt="image" src="https://github.com/user-attachments/assets/ae602029-bd29-450f-a3c7-855b9c8f067d" />
+
+
+<img width="100%" alt="image" src="https://github.com/user-attachments/assets/700dfda9-0fee-4a72-9af9-432e3b4a8a9b" />
+
+<img width="100%" alt="image" src="https://github.com/user-attachments/assets/e72e2c09-ef07-4500-b2fd-addae1b6c2d2" />
 
 **Análisis Descriptivo**
 El análisis responde a una **distribución exponencial** ya que es una variable continua estrictamente no negativa (x≥0), donde la mayor concentración de casos se resuelve en tiempos muy cortos al inicio, pero la gráfica decrece progresivamente mostrando que la media supera significativamente a la mediana debido a la cola larga que generan los casos rezagados.
 
-<img width="353" height="188" alt="image" src="https://github.com/user-attachments/assets/4721ad3c-7210-4827-b1d7-cd6921dc877a" />
 
 
 ## 6. APP o Visualización
