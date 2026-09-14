@@ -16,9 +16,50 @@
 
 # 3. Arquitectura
 
-**Diagrama de Arquitectura:** (Nota: En esta sección de tu entrega, deberás pegar la imagen del diagrama de arquitectura que hayas diseñado para el proyecto, el cual probablemente incluya herramientas de ingestión, almacenamiento y visualización).
+**Diagrama de Arquitectura:**
 
-**Explicación Técnica:** Básicamente, el flujo funciona así: primero recolectamos los datos de los reportes del "NYC Service Request" a través de un canal o tubería que los lleva hacia nuestro almacenamiento principal (como un gran lago de datos en la nube, donde cabe de todo sin importar su formato). Una vez ahí, usamos herramientas de procesamiento potente (pensemos en motores de Big Data) que se encargan de limpiar la información, organizarla y cruzarla. Finalmente, esos datos ya procesados y limpios se conectan a un tablero visual (como Power BI) que los gerentes de la ciudad pueden mirar fácilmente para ver gráficos, tendencias y mapas de calor, entendiendo qué pasa en las calles en tiempo real sin tener que ver ni una sola línea de código.
+<img width="764" height="412" alt="image" src="https://github.com/user-attachments/assets/06b1de4d-2871-42f4-ae6a-85c6623d1ac2" />
+
+
+El flujo de datos sigue un procesamiento por etapas bajo una arquitectura Medallion (Bronze $\rightarrow$ Silver $\rightarrow$ Gold) implementada sobre un entorno de Big Data:
+
+**1. Origen e Ingesta (Fuente a Bronze):**
+Los datos públicos masivos de NYC OpenData (311 Service Requests) se ingieren directamente a la plataforma. En la capa Bronze, se almacenan en formato crudo (raw data) tal como provienen de la fuente, garantizando el historial completo y la trazabilidad de la información en el Delta Lake.
+
+**2. Transformación y Calidad (Bronze a Silver):**
+Los datos crudos pasan a la capa Silver, donde se realiza un Análisis Exploratorio de Datos (EDA) para identificar y tratar valores nulos, corregir inconsistencias y analizar correlaciones entre variables numéricas reales. Aquí la información se limpia, se estandarizan los tipos de datos y se preparan las variables geográficas y temporales.
+
+**3. Consolidación y Modelado (Silver a Gold):**
+En la capa Gold, se realiza la selección de características clave (Feature Selection) y se estructuran los conjuntos de datos finales (incluyendo las particiones de entrenamiento, prueba y validación: Train, Test, Validation). Esta capa contiene datos altamente procesados y agregados, optimizados para análisis avanzado y consultas rápidas.
+
+**Orquestación y Consumo (Gold a Visualización):**
+Todo el flujo (ingesta, transformación y limpieza) es automatizado y ejecutado de manera programada mediante Databricks Workflows. Finalmente, las tablas optimizadas de la capa Gold se conectan a herramientas de inteligencia de negocios como Power BI para alimentar tableros de control con KPIs de gestión urbana, mapas de calor y tiempos de resolución de quejas.
+
+**Componentes en la nube**
+
+**Fuente de Datos (NYC OpenData):** Servidor/API externo que provee la información pública de los reportes urbanos de la ciudad de Nueva York.
+
+**Databricks (Plataforma de Procesamiento de Big Data):** Entorno principal basado en nube donde se ejecutan los trabajos distribuido en Spark para transformar y procesar los grandes volúmenes de datos.
+
+**Delta Lake (Capa de Almacenamiento):** Sistema de almacenamiento sobre la nube (AWS/Azure) que soporta la arquitectura Medallion, garantizando transacciones ACID, trazabilidad de datos y alta velocidad de lectura/escritura.
+
+**Databricks Workflows (Orquestador):** Componente encargado de programar, coordinar y ejecutar automáticamente todo el pipeline de datos sin intervención manual.
+
+**Power BI / Capa de Consumo:** Herramienta final de visualización analítica que consume los datos procesados de la capa Gold para la toma de decisiones.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 4. # PIPELINE - Ingesta de Datos
 
