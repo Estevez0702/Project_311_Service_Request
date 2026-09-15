@@ -85,5 +85,10 @@ La estructura Arquitectónica Medallion (Bronze, Silver, Gold) Organiza y transf
 
 <img width="1549" height="841" alt="image" src="https://github.com/user-attachments/assets/164071ac-8328-4016-abcb-cf279d3a4e28" />
 
+---
 
+## 👨‍💻 Proyecto desarrollado por
+
+**Julian Estévez Herrera**  
+Especialización en Analítica de Datos | BigData
 
