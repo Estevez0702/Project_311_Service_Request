@@ -3,10 +3,10 @@
 # 1. Caso de Negocio
 
 **Descripción del problema**<br><br>
-Imagina una ciudad enorme como Nueva York, donde la gente reporta de todo todos los días: un bache en la calle, ruido excesivo, problemas con el agua o basura acumulada. El problema es que esta información entra como una avalancha desordenada, lo que hace que los departamentos de la ciudad colapsen tratando de clasificar, priorizar y asignar recursos para resolver las quejas a tiempo. Básicamente, se enfrentan a un volumen gigantesco de datos que no están aprovechando bien, lo que genera demoras en el servicio y ciudadanos molestos.
+La ciudad de Nueva York procesa diariamente un volumen masivo e ininterrumpido de solicitudes de servicio ciudadano a través del sistema 311, abarcando desde contaminación auditiva y fallas de infraestructura hasta recolección de residuos. Al ingresar como un flujo de datos desordenado, la capacidad operativa de las entidades municipales se satura rápidamente al intentar clasificar, priorizar y asignar personal de atención en tiempo real. Esta falta de procesamiento analítico avanzado impide aprovechar el valor estratégico de la información, generando cuellos de botella en la atención, respuestas tardías y un uso ineficiente de los recursos públicos.
 
 **Objetivo del proyecto**<br><br>
-La meta principal de aplicar Big Data aquí es tomar todo ese caos y volverlo predecible y manejable. Queremos lograr que la ciudad entienda patrones (por ejemplo, "en este barrio siempre hay problemas de ruido los viernes en la noche" o "después de llover, aumentan los reportes de baches"). El impacto esperado es que los tiempos de respuesta sean más rápidos, que la plata y la gente de los equipos de mantenimiento se usen donde más se necesitan, y al final del día, mejorar la calidad de vida en la ciudad tomando decisiones basadas en datos reales y no en suposiciones
+Implementar una arquitectura de ingeniería de datos sobre **Databricks** que transforme el volumen bruto de alertas 311 en información estructurada, predecible y accionable. El proyecto busca analizar los patrones espacio-temporales y modelar el comportamiento de los **tiempos de atención** de las solicitudes, permitiendo que la administración municipal anticipe la demanda de mantenimiento y tome decisiones operativas basadas en evidencia estadística real.
 
 # 2. Relación Beneficio/Coste (Análisis Económico)
 
@@ -16,7 +16,8 @@ Piensa en la cantidad de horas que gastan los empleados públicos hoy en día le
 **Retorno de Inversión (ROI)** <br><br>
 Aunque implementar una plataforma de datos en la nube (con servidores, almacenamiento y herramientas analíticas) tiene un costo inicial importante, los ahorros operativos a largo plazo lo superan con creces. Imagina que el sistema cueste 100 y nos ahorre 300 al año en horas de trabajo, gasolina de los camiones de reparación y multas o demandas por negligencia; ese retorno hace que la inversión valga la pena rápidamente.
 
-**Mayores Ingresos:** En un contexto público, "ingresos" no siempre significa vender más, sino gastar mejor el presupuesto. Si evitamos que un daño pequeño (como una fuga de agua) se convierta en un desastre gigante porque no lo detectamos a tiempo, estamos ahorrando dinero de los impuestos. El "ingreso" real es la optimización brutal de los recursos públicos; hacemos mucho más con la misma plata de siempre porque ahora somos eficientes.
+**Mayores Ingresos:**  <br><br>
+En el contexto público, "ingresos" no siempre significa vender más, sino gastar mejor el presupuesto. Si evitamos que un daño pequeño (como una fuga de agua) se convierta en un desastre gigante porque no lo detectamos a tiempo, estamos ahorrando dinero de los impuestos. El "ingreso" real es la optimización de los recursos públicos; hacemos mucho más con la misma plata de siempre porque ahora somos eficientes.
 
 # 3. Arquitectura
 
@@ -27,16 +28,16 @@ Aunque implementar una plataforma de datos en la nube (con servidores, almacenam
 
 El flujo de datos sigue un procesamiento por etapas bajo una arquitectura Medallion (Bronze $\rightarrow$ Silver $\rightarrow$ Gold) implementada sobre un entorno de Big Data:
 
-**1. Origen e Ingesta (Fuente a Bronze):**
+**1. Origen e Ingesta (Fuente a Bronze):** <br><br>
 Los datos públicos masivos de NYC OpenData (311 Service Requests) se ingieren directamente a la plataforma. En la capa Bronze, se almacenan en formato crudo (raw data) tal como provienen de la fuente, garantizando el historial completo y la trazabilidad de la información en el Delta Lake.
 
-**2. Transformación y Calidad (Bronze a Silver):**
+**2. Transformación y Calidad (Bronze a Silver):** <br><br>
 Los datos crudos pasan a la capa Silver, donde se realiza un Análisis Exploratorio de Datos (EDA) para identificar y tratar valores nulos, corregir inconsistencias y analizar correlaciones entre variables numéricas reales. Aquí la información se limpia, se estandarizan los tipos de datos y se preparan las variables geográficas y temporales.
 
-**3. Consolidación y Modelado (Silver a Gold):**
+**3. Consolidación y Modelado (Silver a Gold):** <br><br>
 En la capa Gold, se realiza la selección de características clave (Feature Selection) y se estructuran los conjuntos de datos finales (incluyendo las particiones de entrenamiento, prueba y validación: Train, Test, Validation). Esta capa contiene datos altamente procesados y agregados, optimizados para análisis avanzado y consultas rápidas.
 
-**Orquestación y Consumo (Gold a Visualización):**
+**Orquestación y Consumo (Gold a Visualización):** <br><br>
 Todo el flujo (ingesta, transformación y limpieza) es automatizado y ejecutado de manera programada mediante Databricks Workflows. Finalmente, las tablas optimizadas de la capa Gold se conectan a herramientas de inteligencia de negocios como Power BI para alimentar tableros de control con KPIs de gestión urbana, mapas de calor y tiempos de resolución de quejas.
 
 **Componentes en la nube**
